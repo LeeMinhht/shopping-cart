@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+    <div class="panel-heading">AUTHORIZING</div>
+    <table class="table table-border">
+        <thead class="bg-success"style="font-variant:small-caps">
+        <tr>
+            <th>Username</th>
+            <th>Fullname</th>
+            <th >Role</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in accounts">
+            <td>{{item.account.username}}</td>
+            <td>{{item.account.fullname}}</td>
+            <td>{{item.role.name}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>

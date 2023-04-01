@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{/admins/layout/indexx.html :: dynamic(~{::main})}">
+
+<body>
+    <main>
+        <div th:insert="~{/admins/web/viewCart :: shopping_cart}"></div>
+    <div class="container">
+        <section class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header ">
+                        <h2>Order Purshasing</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-capnhat" role="tabpanel" aria-labelledby="nav-capnhat-tab">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="form-group col-6">
+                                            <div style="font-weight: bold">Purchaser: </div>
+                                            <div class="form-control" id="username" >[[${#request.remoteUser}]]</div>
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <div style="font-weight: bold">Order Date</div>
+                                            <div class="form-control"> {{order.createDate | date: 'dd-MM-yyyy'}}</div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div style="font-weight: bold">Address: </div>
+<!--                                            <textarea ng-model="order.address" cols="30" rows="2" class="form-control"-->
+<!--                                                      placeholder="Address"></textarea>-->
+                                            <select ng-model="order.address" class="form-control">
+                                                <option ng-repeat="c in tinhthanh" >{{c.name}}</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="row mt-5">
+                                        <div class="form-group col text-right">
+                                            <button class="btn btn-outline-dark"
+                                                    ng-click="order.purchase()">
+                                                <i class="fas fa-save"></i> Purchase
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+</main>
+</body>
+</html>

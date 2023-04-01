@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{/admins/layout/indexx.html :: dynamic(~{::main})}">
+
+<body>
+    <main>
+        <div class="contact-us">
+            <div class="container">
+        <div class="row">
+            <form th:action="@{/security/login}" method="post">
+            <div class="col-12">
+                <input type="text" name="username" placeholder="username">
+            </div>
+            <div class="col-12">
+                <input type="text" name="password" placeholder="Password">
+                <button class="btn btn-primary">Login</button>
+            </div>
+            </form>
+        </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  th:replace="~{site/dashboardLayout :: dynamic(~{::main})}">
+
+<head>
+
+
+</head>
+
+<body >
+	<main>
+	<section class="mx-auto" >
+<!--		<div th:if="${message != null}" class="alert alert-primary" role="alert">-->
+<!--			<i>[[${message}]]</i>-->
+<!--		</div>-->
+		<div class="latest-products">
+			<div class="container">
+				<h2 style="text-align: center;">Order</h2>
+
+				<div class="rows mt-4">
+
+					<div class="col-sm-12">
+
+						<table class="table table-borderless table-dark" >
+							<thead>
+								<tr>
+									<th>Id</th>
+									<th>Name</th>
+									<th>Price</th>
+									<th>Quantity</th>
+									<th>Amount</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+
+									<tr ng-repeat="item in cart.items">
+										<td >{{item.productId}}</td>
+										<td >{{item.name}}</td>
+										<td >${{item.unitPrice | number :2}}</td>
+										<td><input ng-change="cart.saveToLocalStorage()" ng-model="item.quantity" type="number">
+												</td>
+										<td >${{item.quantity * item.unitPrice | number:2}}</td>
+										<td>
+											<button ng-click = "cart.remove(item.productId)" class="btn btn-warning">
+												<i class="glyphicon glyphicon-trash">Del</i>
+											</button>
+										</td>
+									</tr>
+
+							</tbody>
+						</table>
+						<p style="font-weight: bold" th:text="${'Total: '+ TOTAL + '$'}"></p>
+						<hr />
+						<div class="panel-footer">
+							<button ng-click = "cart.clear()" class="btn btn-sm btn-danger">
+								<i class="glyphicon glyphicon-trash">Clear</i>
+							</button>
+
+							<a th:href="@{/order/checkout}" class="btn btn-primary">
+								<i class="glyphycon glyphicon-hand-right">Checkout</i>
+							</a>
+						</div>
+						<!-- <a class=" btn-primarybtn btn-sm">Clear
+							Cart</a> <a class="btn btn-primary btn-sm">Add
+							more</a> -->
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+	</main>
+</body>
+
+</html>
